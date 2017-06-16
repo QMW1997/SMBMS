@@ -1,0 +1,3 @@
+# SMBMS
+mybatis项目，单独使用mybatis，适用于学习mybatis人员
+Mybatis里面设置的很多种增删改查和缓存设置等都配置好了，一个个跑即可

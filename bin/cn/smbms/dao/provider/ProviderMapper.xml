@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.smbms.dao.provider.ProviderMapper">
+	<select id="selectProvider" parameterType="integer" resultMap="providers">
+		select b.*,p.* from smbms_bill b,smbms_provider p
+		where p.id=#{id} and 
+		b.providerId=p.id
+	</select>
+	<resultMap type="Provider" id="providers">
+		<id property="id" column="id"/>
+		<collection property="bills" ofType="Bill">
+			<id property="id" column="id"/>
+		</collection>
+	</resultMap>
+</mapper>

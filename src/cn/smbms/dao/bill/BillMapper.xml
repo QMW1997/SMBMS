@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.smbms.dao.bill.BillMapper">
+	<select id="selectBill" resultMap="billList" parameterType="string">
+		select b.*,p.* from smbms_bill b,smbms_provider p
+		where b.productName like concat('%',#{productName},'%') and b.providerId
+		=p.id
+	</select>
+	<resultMap type="Bill" id="billList">
+		<id property="id" column="id"/>
+		<association property="provider" javaType="Provider">
+			<id property="id" column="id"/>
+		</association>
+	</resultMap>
+</mapper>
